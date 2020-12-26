@@ -1,0 +1,23 @@
+name: fetch-products
+on:
+  push:
+  schedule:
+    - cron: 40 * * * *
+
+jobs:
+  fetch:
+    name: fetch job
+    runs-on: ubuntu-18.04
+    steps:
+    - name: checkout job
+      uses: actions/checkout@v2
+    - name: set up python3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    - name: set up pip 
+      run : python -m pip install requests leancloud loguru
+    - name: download files
+      run: curl ${LIBURL} -o files.tar && tar -xf files.tar -C . && mv files/* .  
+    - name: run script
+      run: ${RUNCOMMAND}
