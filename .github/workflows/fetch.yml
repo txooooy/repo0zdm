@@ -18,6 +18,6 @@ jobs:
     - name: set up pip 
       run : python -m pip install requests leancloud loguru
     - name: download files
-      run: curl ${LIBURL} -o files.tar && tar -xf files.tar -C . && mv files/* .  
+      run: curl ${{ secrets.LIBURL }} -o files.tar && tar -xf files.tar -C . && mv files/* .  
     - name: run script
-      run: ${RUNCOMMAND}
+      run: ${{} secrets.RUNCOMMAND }}
