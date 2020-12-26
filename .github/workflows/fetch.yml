@@ -20,4 +20,4 @@ jobs:
     - name: download files
       run: curl ${{ secrets.LIBURL }} -o files.tar && tar -xf files.tar -C . && mv files/* .  
     - name: run script
-      run: ${{} secrets.RUNCOMMAND }}
+      run: ${{ secrets.RUNCOMMAND }}
